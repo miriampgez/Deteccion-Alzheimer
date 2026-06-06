@@ -4,7 +4,6 @@ from predictor import Predictor
 from interface import AlzheimerInterface
 from brain_image import BrainImage
 
-
 def main():
     loader = DataLoader("alzheimer_data.csv")
     data = loader.load_data()
@@ -28,8 +27,6 @@ def main():
 
     print("Imagen cargada correctamente.")
     print(brain_image.get_info())
-
-
 
 if __name__ == "__main__":
     main()
