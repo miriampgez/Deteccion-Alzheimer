@@ -1,13 +1,24 @@
+import os
 import random
+
 import pandas as pd
 
 
-def calculate_stage(age, mmse, hippocampus, apoe4, app, psen1, psen2):
+def calculate_stage(
+    age,
+    mmse,
+    hippocampus,
+    apoe4,
+    app,
+    psen1,
+    psen2
+):
     score = 0
 
     # =========================
     # MMSE
     # =========================
+
     if mmse >= 27:
         score += 0
     elif mmse >= 24:
@@ -22,6 +33,7 @@ def calculate_stage(age, mmse, hippocampus, apoe4, app, psen1, psen2):
     # =========================
     # VOLUMEN DEL HIPOCAMPO
     # =========================
+
     if hippocampus >= 7000:
         score += 0
     elif hippocampus >= 6200:
@@ -34,6 +46,7 @@ def calculate_stage(age, mmse, hippocampus, apoe4, app, psen1, psen2):
     # =========================
     # EDAD
     # =========================
+
     if age < 60:
         score += 0
     elif age < 70:
@@ -46,6 +59,7 @@ def calculate_stage(age, mmse, hippocampus, apoe4, app, psen1, psen2):
     # =========================
     # GENÉTICA
     # =========================
+
     genetic_score = 0
 
     if apoe4 == 1:
@@ -66,10 +80,13 @@ def calculate_stage(age, mmse, hippocampus, apoe4, app, psen1, psen2):
 
     if apoe4 > 0:
         gene_count += 1
+
     if app == 1:
         gene_count += 1
+
     if psen1 == 1:
         gene_count += 1
+
     if psen2 == 1:
         gene_count += 1
 
@@ -84,14 +101,17 @@ def calculate_stage(age, mmse, hippocampus, apoe4, app, psen1, psen2):
     # =========================
     # CLASIFICACIÓN FINAL
     # =========================
+
     if score < 3:
         return "No Alzheimer"
-    elif score < 5:
+
+    if score < 5:
         return "Early"
-    elif score < 7:
+
+    if score < 7:
         return "Moderate"
-    else:
-        return "Severe"
+
+    return "Severe"
 
 
 def generate_mmse(age):
@@ -100,28 +120,31 @@ def generate_mmse(age):
     if age < 50:
         if mmse_random < 0.90:
             return random.randint(27, 30)
-        else:
-            return random.randint(24, 26)
 
-    elif age < 70:
+        return random.randint(24, 26)
+
+    if age < 70:
         if mmse_random < 0.60:
             return random.randint(27, 30)
-        elif mmse_random < 0.85:
-            return random.randint(24, 26)
-        else:
-            return random.randint(12, 24)
 
-    else:
-        if mmse_random < 0.30:
-            return random.randint(27, 30)
-        elif mmse_random < 0.60:
+        if mmse_random < 0.85:
             return random.randint(24, 26)
-        elif mmse_random < 0.85:
-            return random.randint(12, 24)
-        elif mmse_random < 0.95:
-            return random.randint(9, 12)
-        else:
-            return random.randint(5, 8)
+
+        return random.randint(12, 24)
+
+    if mmse_random < 0.30:
+        return random.randint(27, 30)
+
+    if mmse_random < 0.60:
+        return random.randint(24, 26)
+
+    if mmse_random < 0.85:
+        return random.randint(12, 24)
+
+    if mmse_random < 0.95:
+        return random.randint(9, 12)
+
+    return random.randint(5, 8)
 
 
 def generate_genes():
@@ -148,9 +171,43 @@ def generate_hippocampus(age):
         reduction = (age - 60) * random.randint(20, 45)
         hippocampus -= reduction
 
-    hippocampus = max(5000, min(8000, hippocampus))
+    return max(5000, min(8000, hippocampus))
 
-    return hippocampus
+
+def create_patient_record(
+    age,
+    mmse,
+    hippocampus_volume,
+    apoe4_copies,
+    app_mutation,
+    psen1_mutation,
+    psen2_mutation
+):
+    """
+    Crea un paciente y calcula siempre su diagnóstico
+    utilizando calculate_stage().
+    """
+
+    diagnosis_stage = calculate_stage(
+        age,
+        mmse,
+        hippocampus_volume,
+        apoe4_copies,
+        app_mutation,
+        psen1_mutation,
+        psen2_mutation
+    )
+
+    return {
+        "age": age,
+        "mmse": mmse,
+        "hippocampus_volume": hippocampus_volume,
+        "apoe4_copies": apoe4_copies,
+        "app_mutation": app_mutation,
+        "psen1_mutation": psen1_mutation,
+        "psen2_mutation": psen2_mutation,
+        "diagnosis_stage": diagnosis_stage
+    }
 
 
 def generate_patient():
@@ -160,37 +217,48 @@ def generate_patient():
     hippocampus = generate_hippocampus(age)
     apoe4, app, psen1, psen2 = generate_genes()
 
-    diagnosis_stage = calculate_stage(
-        age,
-        mmse,
-        hippocampus,
-        apoe4,
-        app,
-        psen1,
-        psen2
+    return create_patient_record(
+        age=age,
+        mmse=mmse,
+        hippocampus_volume=hippocampus,
+        apoe4_copies=apoe4,
+        app_mutation=app,
+        psen1_mutation=psen1,
+        psen2_mutation=psen2
     )
 
-    return {
-        "age": age,
-        "mmse": mmse,
-        "hippocampus_volume": hippocampus,
-        "apoe4_copies": apoe4,
-        "app_mutation": app,
-        "psen1_mutation": psen1,
-        "psen2_mutation": psen2,
-        "diagnosis_stage": diagnosis_stage
-    }
 
+def generate_dataset(
+    output_path,
+    number_of_patients=5000,
+    forced_repetitions=80,
+    random_seed=42
+):
+    """
+    Genera el dataset completo y lo guarda en output_path.
 
-def main():
+    Devuelve también el DataFrame generado.
+    """
+
+    # Permite generar siempre el mismo dataset.
+    # Esto es recomendable para que los resultados del TFG
+    # sean reproducibles.
+    random.seed(random_seed)
+
     patients = []
 
-    # Dataset general
-    for _ in range(5000):
+    # =========================
+    # PACIENTES GENERALES
+    # =========================
+
+    for _ in range(number_of_patients):
         patients.append(generate_patient())
 
-    # Casos forzados: jóvenes con carga genética alta
-    forced_cases = [
+    # =========================
+    # CASOS FORZADOS
+    # =========================
+
+    forced_profiles = [
         {
             "age": 35,
             "mmse": 25,
@@ -198,8 +266,7 @@ def main():
             "apoe4_copies": 2,
             "app_mutation": 1,
             "psen1_mutation": 1,
-            "psen2_mutation": 1,
-            "diagnosis_stage": "Early"
+            "psen2_mutation": 1
         },
         {
             "age": 35,
@@ -208,8 +275,7 @@ def main():
             "apoe4_copies": 2,
             "app_mutation": 1,
             "psen1_mutation": 1,
-            "psen2_mutation": 1,
-            "diagnosis_stage": "Early"
+            "psen2_mutation": 1
         },
         {
             "age": 40,
@@ -218,8 +284,7 @@ def main():
             "apoe4_copies": 2,
             "app_mutation": 1,
             "psen1_mutation": 1,
-            "psen2_mutation": 1,
-            "diagnosis_stage": "Early"
+            "psen2_mutation": 1
         },
         {
             "age": 45,
@@ -228,8 +293,7 @@ def main():
             "apoe4_copies": 2,
             "app_mutation": 1,
             "psen1_mutation": 1,
-            "psen2_mutation": 1,
-            "diagnosis_stage": "Moderate"
+            "psen2_mutation": 1
         },
         {
             "age": 35,
@@ -238,8 +302,7 @@ def main():
             "apoe4_copies": 1,
             "app_mutation": 1,
             "psen1_mutation": 1,
-            "psen2_mutation": 0,
-            "diagnosis_stage": "Early"
+            "psen2_mutation": 0
         },
         {
             "age": 35,
@@ -248,8 +311,7 @@ def main():
             "apoe4_copies": 1,
             "app_mutation": 1,
             "psen1_mutation": 0,
-            "psen2_mutation": 1,
-            "diagnosis_stage": "Early"
+            "psen2_mutation": 1
         },
         {
             "age": 35,
@@ -258,20 +320,50 @@ def main():
             "apoe4_copies": 1,
             "app_mutation": 1,
             "psen1_mutation": 0,
-            "psen2_mutation": 0,
-            "diagnosis_stage": "No Alzheimer"
+            "psen2_mutation": 0
         }
     ]
 
-    # Repetimos estos casos para que el modelo los aprenda bien
-    for _ in range(80):
-        patients.extend(forced_cases)
+    for _ in range(forced_repetitions):
+        for profile in forced_profiles:
+            patients.append(
+                create_patient_record(**profile)
+            )
 
-    df = pd.DataFrame(patients)
+    dataframe = pd.DataFrame(patients)
 
-    df.to_csv("alzheimer_data.csv", index=False)
+    # Convierte la ruta en absoluta y crea la carpeta si fuera necesario.
+    absolute_output_path = os.path.abspath(output_path)
+    output_directory = os.path.dirname(absolute_output_path)
 
-    print("Dataset generado correctamente: alzheimer_data.csv")
-    print()
-    print("Distribución de clases:")
-    print(df["diagnosis_stage"].value_counts())
+    os.makedirs(output_directory, exist_ok=True)
+
+    dataframe.to_csv(
+        absolute_output_path,
+        index=False
+    )
+
+    print(
+        f"Dataset generado correctamente: "
+        f"{absolute_output_path}"
+    )
+
+    print("\nDistribución de clases:")
+    print(dataframe["diagnosis_stage"].value_counts())
+
+    return dataframe
+
+
+if __name__ == "__main__":
+    project_root = os.path.dirname(
+        os.path.dirname(
+            os.path.abspath(__file__)
+        )
+    )
+
+    default_dataset_path = os.path.join(
+        project_root,
+        "alzheimer_data.csv"
+    )
+
+    generate_dataset(default_dataset_path)
