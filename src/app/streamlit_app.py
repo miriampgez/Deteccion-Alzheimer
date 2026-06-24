@@ -254,6 +254,105 @@ st.markdown(
             margin-bottom: 6px;
         }
 
+
+        /* Tarjetas de variables clínicas y factores genéticos */
+        .st-key-patient_cards {
+            margin-top: 0.4rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .st-key-patient_cards div[data-testid="stHorizontalBlock"] {
+            gap: 1.5rem;
+            align-items: stretch;
+        }
+
+        .st-key-patient_cards
+        div[data-testid="stHorizontalBlock"]
+        > div[data-testid="stColumn"] {
+            box-sizing: border-box;
+            min-height: 555px;
+            height: auto;
+            padding: 1.45rem 1.5rem 1.65rem;
+            border: 2px solid transparent;
+            border-radius: 28px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.96) 0%,
+                    rgba(247, 248, 255, 0.94) 55%,
+                    rgba(249, 252, 255, 0.96) 100%
+                ) padding-box,
+                linear-gradient(
+                    135deg,
+                    #8B5CF6 0%,
+                    #38BDF8 48%,
+                    #F472B6 100%
+                ) border-box;
+            box-shadow: none;
+            transition: none;
+        }
+
+        .st-key-patient_cards
+        div[data-testid="stHorizontalBlock"]
+        > div[data-testid="stColumn"]:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .patient-card-title {
+            display: flex;
+            align-items: center;
+            min-height: 82px;
+            margin-bottom: 1.35rem;
+            padding: 1.15rem 1.35rem;
+            border: 1px solid rgba(139, 92, 246, 0.10);
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: none;
+            color: #61697A;
+            font-size: 0.96rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .patient-card-title::before {
+            content: "";
+            flex: 0 0 auto;
+            width: 12px;
+            height: 12px;
+            margin-right: 12px;
+            border-radius: 999px;
+            background: linear-gradient(
+                135deg,
+                #8B5CF6 0%,
+                #38BDF8 50%,
+                #F472B6 100%
+            );
+            box-shadow:
+                0 0 12px rgba(139, 92, 246, 0.42),
+                0 0 18px rgba(56, 189, 248, 0.22);
+        }
+
+        .st-key-patient_cards div[data-testid="stNumberInput"],
+        .st-key-patient_cards div[data-testid="stSelectbox"] {
+            margin-bottom: 0.45rem;
+        }
+
+        .st-key-patient_cards div[data-baseweb="input"],
+        .st-key-patient_cards div[data-baseweb="select"] > div {
+            background-color: rgba(246, 248, 252, 0.94);
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .st-key-patient_cards
+            div[data-testid="stHorizontalBlock"]
+            > div[data-testid="stColumn"] {
+                min-height: auto;
+            }
+        }
+
         /* Métricas propias */
         .metric-card {
             background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
@@ -295,6 +394,330 @@ st.markdown(
 
         .accent-cyan {
             color: #00AFC6;
+        }
+
+
+        /* Distribución visual de probabilidades */
+        .probability-panel {
+            position: relative;
+            overflow: hidden;
+            margin: 0.35rem 0 1.8rem;
+            padding: 2rem 2.1rem 2.15rem;
+            border: 1px solid rgba(203, 213, 225, 0.82);
+            border-radius: 28px;
+            background:
+                radial-gradient(
+                    circle at 92% 8%,
+                    rgba(244, 114, 182, 0.11),
+                    transparent 24%
+                ),
+                radial-gradient(
+                    circle at 7% 6%,
+                    rgba(56, 189, 248, 0.10),
+                    transparent 25%
+                ),
+                linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.98) 0%,
+                    rgba(248, 250, 255, 0.96) 100%
+                );
+            box-shadow:
+                0 18px 44px rgba(31, 41, 55, 0.07),
+                0 8px 22px rgba(79, 70, 229, 0.05);
+        }
+
+        .probability-panel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(
+                90deg,
+                #8B5CF6 0%,
+                #38BDF8 50%,
+                #F472B6 100%
+            );
+        }
+
+        .probability-kicker {
+            margin-bottom: 0.45rem;
+            color: #7C5CFC;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+        }
+
+        .probability-heading {
+            margin: 0;
+            background: linear-gradient(
+                90deg,
+                #6D4AFF 0%,
+                #258FD8 48%,
+                #DB4C9F 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 1.85rem;
+            font-weight: 850;
+            line-height: 1.18;
+        }
+
+        .probability-intro {
+            max-width: 870px;
+            margin: 0.72rem 0 1.65rem;
+            color: #5F697B;
+            font-size: 1.06rem;
+            line-height: 1.62;
+        }
+
+        .probability-list {
+            display: grid;
+            gap: 0.95rem;
+        }
+
+        .probability-item {
+            padding: 1.05rem 1.15rem 1.15rem;
+            border: 1px solid rgba(226, 232, 240, 0.95);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.78);
+            box-shadow: 0 8px 20px rgba(31, 41, 55, 0.035);
+        }
+
+        .probability-item.is-main {
+            border-color: rgba(139, 92, 246, 0.34);
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(139, 92, 246, 0.075),
+                    rgba(56, 189, 248, 0.045),
+                    rgba(244, 114, 182, 0.06)
+                ),
+                rgba(255, 255, 255, 0.92);
+            box-shadow:
+                0 12px 26px rgba(109, 74, 255, 0.08),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+        }
+
+        .probability-topline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.82rem;
+        }
+
+        .probability-name-wrap {
+            min-width: 0;
+        }
+
+        .probability-name-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .probability-name {
+            color: #172033;
+            font-size: 1.02rem;
+            font-weight: 820;
+        }
+
+        .probability-description {
+            margin-top: 0.2rem;
+            color: #778195;
+            font-size: 0.84rem;
+            line-height: 1.4;
+        }
+
+        .probability-main-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.55rem;
+            border: 1px solid rgba(139, 92, 246, 0.18);
+            border-radius: 999px;
+            background: rgba(139, 92, 246, 0.09);
+            color: #7048D7;
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.035em;
+            text-transform: uppercase;
+        }
+
+        .probability-value {
+            flex: 0 0 auto;
+            min-width: 86px;
+            text-align: right;
+            color: #111827;
+            font-size: 1.28rem;
+            font-weight: 850;
+            letter-spacing: -0.02em;
+        }
+
+        .probability-track {
+            position: relative;
+            height: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(226, 232, 240, 0.92);
+            border-radius: 999px;
+            background: rgba(235, 239, 246, 0.88);
+            box-shadow: inset 0 2px 4px rgba(100, 116, 139, 0.08);
+        }
+
+        .probability-fill {
+            position: relative;
+            height: 100%;
+            min-width: 5px;
+            border-radius: inherit;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.18);
+        }
+
+        .probability-fill::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.05),
+                rgba(255, 255, 255, 0.34),
+                rgba(255, 255, 255, 0.08)
+            );
+        }
+
+        .probability-fill.no-alzheimer {
+            background: linear-gradient(90deg, #38BDF8, #60A5FA);
+        }
+
+        .probability-fill.early {
+            background: linear-gradient(90deg, #5B78F6, #8B5CF6);
+        }
+
+        .probability-fill.moderate {
+            background: linear-gradient(90deg, #8B5CF6, #D946EF);
+        }
+
+        .probability-fill.severe {
+            background: linear-gradient(90deg, #D946EF, #F472B6);
+        }
+
+        .probability-fill.other {
+            background: linear-gradient(90deg, #8B5CF6, #38BDF8, #F472B6);
+        }
+
+        .probability-note {
+            margin-top: 1.3rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(226, 232, 240, 0.86);
+            color: #7A8496;
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 640px) {
+            .probability-panel {
+                padding: 1.55rem 1.15rem 1.5rem;
+            }
+
+            .probability-heading {
+                font-size: 1.55rem;
+            }
+
+            .probability-intro {
+                font-size: 0.98rem;
+            }
+
+            .probability-topline {
+                align-items: flex-start;
+            }
+
+            .probability-value {
+                min-width: 72px;
+                font-size: 1.12rem;
+            }
+        }
+
+
+        /* Panel unificado del análisis de imagen */
+        .st-key-image_analysis_panel {
+            margin-top: 0.4rem;
+            margin-bottom: 1.6rem;
+            padding: 1.9rem 2rem 2rem;
+            border: 1px solid rgba(203, 213, 225, 0.88);
+            border-radius: 28px;
+            background:
+                radial-gradient(
+                    circle at 92% 8%,
+                    rgba(244, 114, 182, 0.10),
+                    transparent 24%
+                ),
+                radial-gradient(
+                    circle at 7% 6%,
+                    rgba(56, 189, 248, 0.09),
+                    transparent 25%
+                ),
+                linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.98) 0%,
+                    rgba(248, 250, 255, 0.96) 100%
+                );
+            box-shadow:
+                0 18px 44px rgba(31, 41, 55, 0.07),
+                0 8px 22px rgba(79, 70, 229, 0.05);
+        }
+
+        .analysis-kicker {
+            margin-bottom: 0.45rem;
+            color: #7C5CFC;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+        }
+
+        .analysis-heading {
+            margin: 0;
+            color: #14213A;
+            font-size: 1.75rem;
+            font-weight: 850;
+            line-height: 1.18;
+        }
+
+        .analysis-intro {
+            margin: 0.72rem 0 1.45rem;
+            color: #5F697B;
+            font-size: 1.03rem;
+            line-height: 1.62;
+        }
+
+        .analysis-divider {
+            height: 1px;
+            margin: 1.15rem 0 1.35rem;
+            background: linear-gradient(90deg, transparent, #D5DEEA, transparent);
+        }
+
+        .analysis-note-card {
+            border-radius: 20px;
+            padding: 1rem 1.1rem;
+            margin-top: 1rem;
+            line-height: 1.6;
+            font-size: 0.98rem;
+        }
+
+        .analysis-note-card.info {
+            background: rgba(238, 244, 255, 0.95);
+            border: 1px solid #D7E3FF;
+            color: #2E4DA7;
+        }
+
+        .analysis-note-card.warning {
+            background: rgba(255, 248, 230, 0.95);
+            border: 1px solid #F5D98B;
+            color: #7A5600;
         }
 
         /* Avisos */
@@ -366,6 +789,75 @@ st.markdown(
             margin: 24px 0px;
         }
 
+        /* Aviso médico final */
+        .medical-notice-panel {
+            position: relative;
+            overflow: hidden;
+            margin-top: 1.1rem;
+            margin-bottom: 0.8rem;
+            padding: 1.85rem 2rem 1.95rem;
+
+            /* Borde rojo pastel */
+            border: 1px solid rgba(248, 180, 180, 0.95);
+
+            border-radius: 28px;
+
+            /* Fondo rojo pastel muy suave */
+            background:
+                radial-gradient(
+                    circle at 95% 10%,
+                    rgba(248, 113, 113, 0.10),
+                    transparent 24%
+                ),
+                linear-gradient(
+                    145deg,
+                    rgba(255, 247, 247, 0.98) 0%,
+                    rgba(255, 235, 235, 0.98) 100%
+                );
+
+            box-shadow: 0 12px 30px rgba(185, 70, 70, 0.06);
+        }
+
+        .medical-notice-panel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+
+            /* Línea superior roja */
+            background: linear-gradient(
+                90deg,
+                #F8B4B4 0%,
+                #F08080 50%,
+                #E96B6B 100%
+            );
+        }
+
+        .medical-notice-kicker {
+            margin-bottom: 0.45rem;
+            color: #B54747;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+        }
+
+        .medical-notice-title {
+            margin: 0 0 0.7rem 0;
+            color: #8F3030;
+            font-size: 1.55rem;
+            font-weight: 850;
+            line-height: 1.18;
+        }
+
+        .medical-notice-text {
+            color: #9E4040;
+            font-size: 1.03rem;
+            line-height: 1.68;
+            max-width: 1020px;
+        }
         /* Footer */
         .footer-note {
             text-align: center;
@@ -450,10 +942,6 @@ with hero_right:
             f"""
             <div class="hero-visual">
                 <img src="{brain_image_src}" class="hero-brain-image">
-                <div class="hero-floating-card">
-                    Análisis orientativo<br>
-                    <strong>no diagnóstico</strong>
-                </div>
             </div>
             """,
             unsafe_allow_html=True
@@ -463,15 +951,10 @@ with hero_right:
             """
             <div class="hero-visual">
                 <div class="brain-icon">🧠</div>
-                <div class="hero-floating-card">
-                    Análisis orientativo<br>
-                    <strong>no diagnóstico</strong>
-                </div>
             </div>
             """,
             unsafe_allow_html=True
         )
-
 
 # ============================================================
 # DATOS DEL PACIENTE
@@ -490,79 +973,92 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-clinical_col, genetic_col = st.columns([1.2, 1])
+with st.container(key="patient_cards"):
+    clinical_col, genetic_col = st.columns(2, gap="large")
 
-with clinical_col:
-    st.markdown(
-        """
-        <div class="section-card">
-            <div class="small-label">Variables clínicas</div>
-        """,
-        unsafe_allow_html=True
-    )
+    with clinical_col:
+        st.markdown(
+            """
+            <div class="patient-card-title">Variables clínicas</div>
+            """,
+            unsafe_allow_html=True
+        )
 
-    age = st.number_input(
-        "Edad",
-        min_value=0,
-        max_value=120,
-        value=65,
-        help="Edad del paciente en años."
-    )
+        age = st.number_input(
+            "Edad",
+            min_value=0,
+            max_value=120,
+            value=65,
+            help="Edad del paciente en años.",
+            key="patient_age"
+        )
 
-    mmse = st.number_input(
-        "Puntuación MMSE",
-        min_value=0,
-        max_value=30,
-        value=25,
-        help="Puntuación del Mini-Mental State Examination. Valores más bajos suelen indicar mayor deterioro cognitivo."
-    )
+        mmse = st.number_input(
+            "Puntuación MMSE",
+            min_value=0,
+            max_value=30,
+            value=25,
+            help=(
+                "Puntuación del Mini-Mental State Examination. "
+                "Valores más bajos suelen indicar mayor deterioro cognitivo."
+            ),
+            key="patient_mmse"
+        )
 
-    hippocampus_volume = st.number_input(
-        "Volumen total del hipocampo (mm³, ambos hemisferios)",
-        min_value=5000,
-        max_value=8000,
-        value=7000,
-        step=50,
-        help="Volumen total aproximado del hipocampo expresado en milímetros cúbicos."
-    )
+        hippocampus_volume = st.number_input(
+            "Volumen total del hipocampo (mm³, ambos hemisferios)",
+            min_value=5000,
+            max_value=8000,
+            value=7000,
+            step=50,
+            help=(
+                "Volumen total aproximado del hipocampo expresado "
+                "en milímetros cúbicos."
+            ),
+            key="patient_hippocampus"
+        )
 
-    st.markdown("</div>", unsafe_allow_html=True)
+    with genetic_col:
+        st.markdown(
+            """
+            <div class="patient-card-title">Factores genéticos</div>
+            """,
+            unsafe_allow_html=True
+        )
 
+        apoe4_copies = st.selectbox(
+            "Copias APOE e4",
+            [0, 1, 2],
+            help=(
+                "Número de copias del alelo APOE e4 introducidas "
+                "como variable del modelo."
+            ),
+            key="patient_apoe4"
+        )
 
-with genetic_col:
-    st.markdown(
-        """
-        <div class="section-card">
-            <div class="small-label">Factores genéticos</div>
-        """,
-        unsafe_allow_html=True
-    )
+        app_mutation = st.selectbox(
+            "Mutación APP",
+            [0, 1],
+            format_func=lambda value: "No" if value == 0 else "Sí",
+            help="Indica si existe una mutación APP.",
+            key="patient_app"
+        )
 
-    apoe4_copies = st.selectbox(
-        "Copias APOE e4",
-        [0, 1, 2],
-        help="Número de copias del alelo APOE e4 introducidas como variable del modelo."
-    )
+        psen1_mutation = st.selectbox(
+            "Mutación PSEN1",
+            [0, 1],
+            format_func=lambda value: "No" if value == 0 else "Sí",
+            help="Indica si existe una mutación PSEN1.",
+            key="patient_psen1"
+        )
 
-    app_mutation = st.selectbox(
-        "Mutación APP",
-        [0, 1],
-        help="0 indica ausencia y 1 indica presencia de mutación APP."
-    )
-
-    psen1_mutation = st.selectbox(
-        "Mutación PSEN1",
-        [0, 1],
-        help="0 indica ausencia y 1 indica presencia de mutación PSEN1."
-    )
-
-    psen2_mutation = st.selectbox(
-        "Mutación PSEN2",
-        [0, 1],
-        help="0 indica ausencia y 1 indica presencia de mutación PSEN2."
-    )
-
-    st.markdown("</div>", unsafe_allow_html=True)
+        psen2_mutation = st.selectbox(
+            "Mutación PSEN2",
+            [0, 1],
+            format_func=lambda value: "No" if value == 0 else "Sí",
+            help="Indica si existe una mutación PSEN2.",
+            key="patient_psen2"
+        )
 
 
 # ============================================================
@@ -737,216 +1233,289 @@ if calculate:
     # PROBABILIDADES POR CLASE
     # ========================================================
 
-    st.markdown(
-        """
-        <div class="section-card">
-            <div class="section-title">Probabilidades por clase</div>
-            <div class="section-subtitle">
-                Distribución de probabilidades generada por el modelo para cada clase.
-            </div>
-        """,
-        unsafe_allow_html=True
-    )
+    stage_display = {
+        "No Alzheimer": {
+            "label": "Sin indicios de Alzheimer",
+            "description": "Perfil más compatible con ausencia de deterioro asociado.",
+            "css_class": "no-alzheimer",
+            "order": 0,
+        },
+        "Early": {
+            "label": "Etapa inicial",
+            "description": "Compatibilidad con cambios tempranos o leves.",
+            "css_class": "early",
+            "order": 1,
+        },
+        "Moderate": {
+            "label": "Etapa moderada",
+            "description": "Compatibilidad con un nivel intermedio de alteración.",
+            "css_class": "moderate",
+            "order": 2,
+        },
+        "Severe": {
+            "label": "Etapa avanzada",
+            "description": "Compatibilidad con un perfil de alteración más pronunciada.",
+            "css_class": "severe",
+            "order": 3,
+        },
+    }
+
+    probability_rows = []
 
     for stage, probability in probability_dict.items():
-        percentage = probability * 100
-        st.write(f"**{stage}** · {percentage:.2f}%")
-        st.progress(float(probability))
+        stage_name = str(stage)
+        stage_info = stage_display.get(
+            stage_name,
+            {
+                "label": stage_name,
+                "description": "Clase adicional contemplada por el modelo.",
+                "css_class": "other",
+                "order": 99,
+            }
+        )
 
-    st.markdown("</div>", unsafe_allow_html=True)
+        percentage = max(0.0, min(float(probability) * 100, 100.0))
+
+        probability_rows.append(
+            {
+                "label": stage_info["label"],
+                "description": stage_info["description"],
+                "css_class": stage_info["css_class"],
+                "order": stage_info["order"],
+                "percentage": percentage,
+                "is_main": stage_name == str(prediction),
+            }
+        )
+
+    probability_rows.sort(key=lambda row: row["order"])
+
+    probability_items_html = ""
+
+    for row in probability_rows:
+        item_class = (
+            "probability-item is-main"
+            if row["is_main"]
+            else "probability-item"
+        )
+
+        badge_html = (
+            '<span class="probability-main-badge">Resultado principal</span>'
+            if row["is_main"]
+            else ""
+        )
+
+        probability_items_html += (
+            f'<div class="{item_class}">'
+            '<div class="probability-topline">'
+            '<div class="probability-name-wrap">'
+            '<div class="probability-name-row">'
+            f'<span class="probability-name">{row["label"]}</span>'
+            f'{badge_html}'
+            '</div>'
+            f'<div class="probability-description">{row["description"]}</div>'
+            '</div>'
+            f'<div class="probability-value">{row["percentage"]:.2f}%</div>'
+            '</div>'
+            '<div class="probability-track" '
+            'role="progressbar" '
+            f'aria-valuenow="{row["percentage"]:.2f}" '
+            'aria-valuemin="0" '
+            'aria-valuemax="100" '
+            f'aria-label="{row["label"]}">'
+            f'<div class="probability-fill {row["css_class"]}" '
+            f'style="width: {row["percentage"]:.2f}%;"></div>'
+            '</div>'
+            '</div>'
+        )
+
+    probability_panel_html = (
+        '<section class="probability-panel">'
+        '<div class="probability-kicker">Comparación del modelo</div>'
+        '<h2 class="probability-heading">Probabilidad estimada por etapa</h2>'
+        '<p class="probability-intro">'
+        'Distribución de probabilidades generada por el modelo para cada clase.'
+        '</p>'
+        '<div class="probability-list">'
+        f'{probability_items_html}'
+        '</div>'
+        '<div class="probability-note">'
+        'Estos porcentajes representan la confianza relativa del modelo entre sus '
+        'clases y no equivalen a una probabilidad clínica real ni a un diagnóstico.'
+        '</div>'
+        '</section>'
+    )
+
+    st.markdown(
+        probability_panel_html,
+        unsafe_allow_html=True
+    )
 
 
     # ========================================================
     # ANÁLISIS DE IMAGEN OPCIONAL
     # ========================================================
 
-    st.markdown(
-        """
-        <div class="section-card">
-            <div class="section-title">Análisis visual complementario</div>
-            <div class="section-subtitle">
+    with st.container(key="image_analysis_panel"):
+        st.markdown(
+            """
+            <div class="analysis-kicker">Análisis complementario</div>
+            <div class="analysis-heading">Análisis visual complementario</div>
+            <div class="analysis-intro">
                 Esta sección solo utiliza la imagen adjuntada, si existe. El resultado
                 no modifica la predicción principal del modelo.
             </div>
-        """,
-        unsafe_allow_html=True
-    )
+            """,
+            unsafe_allow_html=True
+        )
 
-    if uploaded_image is not None:
-        temp_image_path = None
+        if uploaded_image is not None:
+            temp_image_path = None
 
-        try:
-            file_extension = os.path.splitext(uploaded_image.name)[1]
+            try:
+                file_extension = os.path.splitext(uploaded_image.name)[1]
 
-            with tempfile.NamedTemporaryFile(delete=False, suffix=file_extension) as temp_file:
-                temp_file.write(uploaded_image.getbuffer())
-                temp_image_path = temp_file.name
+                with tempfile.NamedTemporaryFile(delete=False, suffix=file_extension) as temp_file:
+                    temp_file.write(uploaded_image.getbuffer())
+                    temp_image_path = temp_file.name
 
-            # 1. Cargar imagen
-            brain_image = BrainImage(temp_image_path)
-            brain_image.load()
+                # 1. Cargar imagen
+                brain_image = BrainImage(temp_image_path)
+                brain_image.load()
 
-            # 2. Eliminar fondo exterior conservando zonas oscuras internas
-            preprocessor = BrainImagePreprocessor(brain_image)
-            preprocessed_result = preprocessor.preprocess(black_threshold=10)
+                # 2. Eliminar fondo exterior conservando zonas oscuras internas
+                preprocessor = BrainImagePreprocessor(brain_image)
+                preprocessed_result = preprocessor.preprocess(black_threshold=10)
 
-            brain_mask = preprocessed_result["brain_mask"]
+                brain_mask = preprocessed_result["brain_mask"]
 
-            # 3. Analizar zonas oscuras dentro de la región útil
-            analyzer = BrainImageAnalyzer(
-                brain_image=brain_image,
-                brain_mask=brain_mask
-            )
+                # 3. Analizar zonas oscuras dentro de la región útil
+                analyzer = BrainImageAnalyzer(
+                    brain_image=brain_image,
+                    brain_mask=brain_mask
+                )
 
-            image_result = analyzer.analyze_dark_areas(threshold=50)
+                image_result = analyzer.analyze_dark_areas(threshold=50)
 
-            image_metric_1, image_metric_2 = st.columns(2)
+                analysis_metric_1, analysis_metric_2 = st.columns(2)
 
-            with image_metric_1:
+                with analysis_metric_1:
+                    st.markdown(
+                        f"""
+                        <div class="metric-card">
+                            <div class="metric-label">Zonas oscuras detectadas</div>
+                            <div class="metric-value accent-blue">{image_result['dark_percentage']}%</div>
+                            <div class="metric-help">
+                                Porcentaje calculado dentro de la región útil de la imagen.
+                            </div>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+
+                with analysis_metric_2:
+                    st.markdown(
+                        f"""
+                        <div class="metric-card">
+                            <div class="metric-label">Píxeles analizados</div>
+                            <div class="metric-value">{image_result['total_pixels_analyzed']}</div>
+                            <div class="metric-help">
+                                Píxeles incluidos tras eliminar el fondo exterior.
+                            </div>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+
                 st.markdown(
                     f"""
-                    <div class="metric-card">
-                        <div class="metric-label">Zonas oscuras detectadas</div>
-                        <div class="metric-value accent-blue">{image_result['dark_percentage']}%</div>
-                        <div class="metric-help">
-                            Porcentaje calculado dentro de la región útil de la imagen.
-                        </div>
+                    <div class="analysis-note-card info">
+                        <strong>Interpretación del análisis:</strong><br>
+                        {image_result["comment"]}
                     </div>
                     """,
                     unsafe_allow_html=True
                 )
 
-            with image_metric_2:
                 st.markdown(
-                    f"""
-                    <div class="metric-card">
-                        <div class="metric-label">Píxeles analizados</div>
-                        <div class="metric-value">{image_result['total_pixels_analyzed']}</div>
-                        <div class="metric-help">
-                            Píxeles incluidos tras eliminar el fondo exterior.
-                        </div>
+                    """
+                    <div class="analysis-note-card warning">
+                        El porcentaje de zonas oscuras no representa un porcentaje de Alzheimer
+                        ni un porcentaje directo de atrofia. Solo indica qué parte de la región
+                        útil presenta valores de gris bajos según el umbral aplicado.
                     </div>
                     """,
                     unsafe_allow_html=True
                 )
 
-            st.markdown(
-                f"""
-                <div class="soft-info">
-                    <strong>Interpretación del análisis:</strong><br>
-                    {image_result["comment"]}
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
+                st.markdown(
+                    '<div class="analysis-divider"></div>',
+                    unsafe_allow_html=True
+                )
 
+                with st.expander("Ver preprocesamiento de la imagen"):
+                    pre_col_1, pre_col_2, pre_col_3 = st.columns(3)
+
+                    with pre_col_1:
+                        st.image(
+                            preprocessed_result["background_mask"],
+                            caption="Fondo negro exterior detectado",
+                            use_container_width=True,
+                            clamp=True
+                        )
+
+                    with pre_col_2:
+                        st.image(
+                            preprocessed_result["brain_mask"],
+                            caption="Región útil conservada",
+                            use_container_width=True,
+                            clamp=True
+                        )
+
+                    with pre_col_3:
+                        st.image(
+                            preprocessed_result["cleaned_image"],
+                            caption="Imagen sin fondo exterior",
+                            use_container_width=True,
+                            clamp=True
+                        )
+
+            except Exception as e:
+                st.error(f"No se pudo analizar la imagen: {str(e)}")
+
+            finally:
+                if temp_image_path and os.path.exists(temp_image_path):
+                    os.remove(temp_image_path)
+
+        else:
             st.markdown(
                 """
-                <div class="soft-warning">
-                    El porcentaje de zonas oscuras no representa un porcentaje de Alzheimer
-                    ni un porcentaje directo de atrofia. Solo indica qué parte de la región
-                    útil presenta valores de gris bajos según el umbral aplicado.
+                <div class="analysis-note-card info">
+                    No se ha adjuntado imagen cerebral, por lo que no se realiza análisis visual.
                 </div>
                 """,
                 unsafe_allow_html=True
             )
 
-            with st.expander("Ver preprocesamiento de la imagen"):
-                pre_col_1, pre_col_2, pre_col_3 = st.columns(3)
-
-                with pre_col_1:
-                    st.image(
-                        preprocessed_result["background_mask"],
-                        caption="Fondo negro exterior detectado",
-                        use_container_width=True,
-                        clamp=True
-                    )
-
-                with pre_col_2:
-                    st.image(
-                        preprocessed_result["brain_mask"],
-                        caption="Región útil conservada",
-                        use_container_width=True,
-                        clamp=True
-                    )
-
-                with pre_col_3:
-                    st.image(
-                        preprocessed_result["cleaned_image"],
-                        caption="Imagen sin fondo exterior",
-                        use_container_width=True,
-                        clamp=True
-                    )
-
-        except Exception as e:
-            st.error(f"No se pudo analizar la imagen: {str(e)}")
-
-        finally:
-            if temp_image_path and os.path.exists(temp_image_path):
-                os.remove(temp_image_path)
-
-    else:
-        st.markdown(
-            """
-            <div class="soft-info">
-                No se ha adjuntado imagen cerebral, por lo que no se realiza análisis visual.
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
 
     # ========================================================
-    # OBSERVACIONES FINALES
+    # AVISO MÉDICO FINAL
     # ========================================================
 
     st.markdown(
         """
-        <div class="section-card">
-            <div class="section-title">Observaciones clínicas</div>
-            <div class="section-subtitle">
-                Información adicional generada por la aplicación a partir de los datos introducidos.
+        <section class="medical-notice-panel">
+            <div class="medical-notice-kicker">Importante</div>
+            <div class="medical-notice-title">Aviso médico</div>
+            <div class="medical-notice-text">
+                Este resultado es únicamente <strong>orientativo</strong> y no sustituye en ningún caso
+                una valoración médica profesional, un diagnóstico clínico ni una prueba especializada.
+                La aplicación ha sido desarrollada con <strong>finalidad académica y experimental</strong>,
+                por lo que sus resultados deben interpretarse solo como apoyo informativo.
             </div>
+        </section>
         """,
         unsafe_allow_html=True
     )
-
-    if reduction > 0:
-        st.markdown(
-            f"""
-            <div class="soft-info">
-                <strong>Reducción estimada del hipocampo por edad:</strong><br>
-                Para la edad introducida se estima una reducción del {reduction}% a partir de los 60 años,
-                según la lógica implementada en el sistema.
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-    else:
-        st.markdown(
-            """
-            <div class="soft-info">
-                <strong>Reducción estimada del hipocampo por edad:</strong><br>
-                No se aplica reducción por edad antes de los 60 años según la lógica implementada.
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-    st.markdown(
-        """
-        <div class="soft-warning">
-            <strong>Aviso médico:</strong><br>
-            Este resultado es orientativo y no sustituye un diagnóstico médico.
-            La aplicación tiene finalidad académica y experimental.
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    st.markdown("</div>", unsafe_allow_html=True)
 
 
 # ============================================================
