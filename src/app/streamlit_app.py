@@ -1441,24 +1441,24 @@ if calculate:
 
                     with pre_col_1:
                         st.image(
-                            preprocessed_result["background_mask"],
-                            caption="Fondo negro exterior detectado",
+                            preprocessed_result["cleaned_image"],
+                            caption="Imagen original",
                             use_container_width=True,
                             clamp=True
                         )
 
                     with pre_col_2:
                         st.image(
-                            preprocessed_result["brain_mask"],
-                            caption="Región útil conservada",
+                            preprocessed_result["background_mask"],
+                            caption="Fondo negro exterior detectado",
                             use_container_width=True,
                             clamp=True
                         )
 
                     with pre_col_3:
                         st.image(
-                            preprocessed_result["cleaned_image"],
-                            caption="Imagen sin fondo exterior",
+                            preprocessed_result["brain_mask"],
+                            caption="Región útil conservada",
                             use_container_width=True,
                             clamp=True
                         )
