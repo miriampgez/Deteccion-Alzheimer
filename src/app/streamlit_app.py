@@ -450,22 +450,6 @@ st.markdown(
             text-transform: uppercase;
         }
 
-        .probability-heading {
-            margin: 0;
-            background: linear-gradient(
-                90deg,
-                #6D4AFF 0%,
-                #258FD8 48%,
-                #DB4C9F 100%
-            );
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-size: 1.85rem;
-            font-weight: 850;
-            line-height: 1.18;
-        }
-
         .probability-intro {
             max-width: 870px;
             margin: 0.72rem 0 1.65rem;
@@ -880,7 +864,7 @@ st.markdown(
 # CARGA Y ENTRENAMIENTO DEL MODELO
 # ============================================================
 
-@st.cache_resource
+@st.cache_resource(show_spinner=False)
 def load_predictor():
     """
     Genera el dataset, entrena el modelo y devuelve el predictor.
@@ -1331,7 +1315,7 @@ if calculate:
     probability_panel_html = (
         '<section class="probability-panel">'
         '<div class="probability-kicker">Comparación del modelo</div>'
-        '<h2 class="probability-heading">Probabilidad estimada por etapa</h2>'
+        '<div class="section-title">Probabilidad estimada por etapa</div>'
         '<p class="probability-intro">'
         'Distribución de probabilidades generada por el modelo para cada clase.'
         '</p>'
@@ -1343,7 +1327,7 @@ if calculate:
         'clases y no equivalen a una probabilidad clínica real ni a un diagnóstico.'
         '</div>'
         '</section>'
-    )
+    )   
 
     st.markdown(
         probability_panel_html,
