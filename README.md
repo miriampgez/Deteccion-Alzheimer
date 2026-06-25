@@ -157,8 +157,8 @@ El porcentaje obtenido puede estar relacionado con cavidades, ventrículos, surc
 ### 1. Clonar el repositorio
 
 ```bash
-git clone URL_DEL_REPOSITORIO
-cd NOMBRE_DEL_REPOSITORIO
+git clone https://github.com/miriampgez/Deteccion-Alzheimer.git
+cd Deteccion-Alzheimer
 ```
 
 ### 2. Crear un entorno virtual
@@ -186,7 +186,7 @@ pip install -r requirements.txt
 ### 4. Ejecutar la aplicación
 
 ```bash
-streamlit run src/app/streamlit_app.py
+py -m streamlit run src/app/streamlit_app.py
 ```
 
 Después, Streamlit abrirá la interfaz en el navegador. Normalmente estará disponible en:
