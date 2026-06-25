@@ -22,7 +22,7 @@ La aplicación combina diferentes variables relacionadas con el estado clínico 
 
 Además, permite adjuntar de forma opcional una imagen cerebral para realizar un análisis visual complementario basado en el porcentaje de zonas oscuras detectadas dentro de la región útil de la imagen.
 
-> [!IMPORTANT]
+> [!IMPORTANTE]
 > La aplicación tiene finalidad exclusivamente académica y experimental. No sustituye una valoración médica, un diagnóstico clínico ni una prueba especializada.
 
 ---
