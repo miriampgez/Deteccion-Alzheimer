@@ -113,7 +113,8 @@ El porcentaje obtenido puede estar relacionado con cavidades, ventrículos, surc
 
 ```text
 .
-├── alzheimer_data.csv
+├── docs
+│    └── uml_class_diagram.md
 ├── requirements.txt
 ├── README.md
 └── src
@@ -123,6 +124,7 @@ El porcentaje obtenido puede estar relacionado con cavidades, ventrículos, surc
     ├── assets
     │   └── brain_hero.png
     ├── data
+    │   ├── alzheimer_data.csv
     │   ├── data_loader.py
     │   └── generate_dataset.py
     ├── domain
